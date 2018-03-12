@@ -52,6 +52,7 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.SimulationAgent.DeviceTe
             SendingTelemetry,
             TelemetryDeliveryFailed,
             TelemetryDelivered,
+            TelemetrySendRequestFailed
         }
 
         private readonly ILogger log;
@@ -178,6 +179,10 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.SimulationAgent.DeviceTe
                     this.failedMessagesCount++;
                     this.actorLogger.TelemetryFailed();
                     this.ScheduleTelemetryRetry();
+                    break;
+                case ActorEvents.TelemetrySendRequestFailed:
+                    this.failedMessagesCount++;
+                    this.actorLogger.TelemetryFailed();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(e), e, null);

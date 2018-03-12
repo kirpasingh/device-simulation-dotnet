@@ -73,7 +73,7 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.SimulationAgent.DeviceTe
             catch (TelemetrySendException e)
             {
                 this.log.Error("Telemetry error", () => new { this.deviceId, e });
-                this.context.HandleEvent(DeviceTelemetryActor.ActorEvents.TelemetryDeliveryFailed);
+                this.context.HandleEvent(DeviceTelemetryActor.ActorEvents.TelemetrySendRequestFailed);
             }
             catch (Exception e)
             {
