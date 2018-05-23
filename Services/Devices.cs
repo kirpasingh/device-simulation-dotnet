@@ -293,8 +293,10 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.Services
         {
             // Since we're running across a cluster, devise a strategy to get unique names
             // According to https://forums.docker.com/t/net-core-linux-get-docker-container-id-in-code/32725
-            // Environment.MachineName returns the GUID of the container
-            return Environment.MachineName + "_" + deviceModelId + "." + position;
+            // Environment.MachineName returns the GUID of the container. To avoid recreating the devices
+            // use env var specified prefix, if available
+            var prefix = string.IsNullOrEmpty(this.servicesConfig.IoTHubDeviceIdPrefix) ? Environment.MachineName : this.servicesConfig.IoTHubDeviceIdPrefix;
+            return prefix + "_" + deviceModelId + "." + position;
         }
 
         // This call can throw an exception, which is fine when the exception happens during a method

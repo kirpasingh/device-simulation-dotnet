@@ -14,6 +14,7 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Runtime
         int StorageAdapterApiTimeout { get; }
         bool TwinReadWriteEnabled { get; }
         int IoTSdkConnectTimeout { get; }
+        string IoTHubDeviceIdPrefix { get; }
     }
 
     // TODO: test Windows/Linux folder separator
@@ -60,6 +61,8 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Runtime
         public bool TwinReadWriteEnabled { get; set; }
 
         public int IoTSdkConnectTimeout { get; set; }
+
+        public string IoTHubDeviceIdPrefix { get; set; }
 
         private string NormalizePath(string path)
         {
