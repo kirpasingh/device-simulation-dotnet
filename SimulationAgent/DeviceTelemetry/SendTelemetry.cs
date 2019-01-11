@@ -66,7 +66,7 @@ namespace Microsoft.Azure.IoTSolutions.DeviceSimulation.SimulationAgent.DeviceTe
             }
 
             // Kirpas: Temporary fix as metadata is not correctly interpreted by streaming solutions such as ASA
-            var format = $"{{\"{OCCURRENCE_TIME_PROPERTY}\":\"{DateTimeOffset.UtcNow.ToString()}\",\"{DEVICE_ID_PROPERTY}\":\"{this.deviceId}\",";
+            var format = $"{{\"{OCCURRENCE_TIME_PROPERTY}\":\"{DateTimeOffset.UtcNow.ToString("o")}\",\"{DEVICE_ID_PROPERTY}\":\"{this.deviceId}\",";
             msg = msg.Replace("{", "");
             msg = String.Concat(format, msg);
 
